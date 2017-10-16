@@ -1,0 +1,32 @@
+.Timer {
+  &__hours,
+  &__minutes,
+  &__seconds,
+  &__date {
+    font-size: rem(20px);
+    color: $mainColor;
+  }
+
+  &__month,
+  &__year {
+    font-size: rem(16px);
+    color: #707980;
+    margin-left: 4px;
+  }
+
+  &__month {
+    display: inline-block;
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  &__separator {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1px;
+    height: 24px;
+    background-color: #dbe3eb;
+    margin: 0 11px;
+  }
+}

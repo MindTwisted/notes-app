@@ -1,0 +1,42 @@
+.FormGroup {
+  margin-bottom: 20px;
+
+  &__label {
+    color: $darkColor;
+    margin: 10px 0;
+  }
+}
+
+.InputField {
+  &__input {
+    input {
+      display: block;
+      width: 100%;
+      color: $darkColor;
+      border: 1px solid rgba($darkColor, 0.15);
+      border-radius: 5px;
+      padding: 10px 0;
+      text-indent: 10px;
+      transition: border-color 0.25s ease;
+
+      &:focus {
+        border-color: $primaryColor;
+      }
+    }
+
+    &--isError {
+      input {
+        border-color: $dangerColor;
+
+        &:focus {
+          border-color: $dangerColor;
+          box-shadow: 0 0 1px 1px $dangerColor;
+        }
+      }
+    }
+  }
+
+  &__errorsList {
+    color: $dangerColor;
+  }
+}

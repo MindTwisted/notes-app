@@ -1,0 +1,11 @@
+.DashboardSVG {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  display: block;
+  fill: $sidebarDefaultColor;
+
+  .active & {
+    fill: $mainColor;
+  }
+}

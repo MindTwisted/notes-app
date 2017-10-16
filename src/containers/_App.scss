@@ -1,0 +1,11 @@
+.App {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__components {
+    width: 100%;
+    padding: 20px 30px;
+  }
+}

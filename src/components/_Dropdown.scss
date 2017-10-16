@@ -1,0 +1,79 @@
+.Dropdown {
+  position: relative;
+
+  &__button {
+    background-color: $mainColor;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: relative;
+    transition: box-shadow 0.25s ease;
+
+    &:hover {
+      box-shadow: 0.6px 1.9px 8px 0 rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+  }
+
+  &__userPhoto {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__arrow {
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0.6px 1.9px 8px 0 rgba(0, 0, 0, 0.26);
+
+    &::after {
+      @include absoluteCentering();
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 4.5px 0 4.5px;
+      border-color: $mainColor transparent transparent transparent;
+    }
+  }
+
+  &__menu {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 5px 10px 0 rgba(41, 53, 65, 0.15);
+    background-color: #fff;
+    min-width: 200px;
+    right: 0;
+    margin-top: 12px;
+    z-index: 1;
+
+    &--isVisible {
+      display: block;
+    }
+  }
+
+  &__menuItem {
+    font-weight: 300;
+    padding: 14px 18px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #f0f3f8;
+    }
+
+    &--isClickable {
+      &:hover {
+        background-color: rgba(#000000, 0.05);
+        cursor: pointer;
+      }
+    }
+  }
+
+}

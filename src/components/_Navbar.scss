@@ -1,0 +1,36 @@
+.Navbar {
+  min-height: $navbarHeight;
+  height: 1px;
+  background-color: #fff;
+  box-shadow: $panelShadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    background-color: $mainColor;
+    width: $sidebarWidth;
+    min-height: 100%;
+    position: relative;
+
+    img {
+      max-width: 70px;
+      width: 100%;
+      @include absoluteCentering;
+    }
+  }
+
+  &__dropdown {
+    margin-right: 32px;
+  }
+
+  &__left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__timer {
+    margin-left: 30px;
+  }
+}

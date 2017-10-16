@@ -1,0 +1,34 @@
+.Button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: $defaultButtonColor;
+  border: 1px solid transparent;
+  color: #ffffff;
+  font-weight: 400;
+  transition: all 0.15s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($defaultButtonColor, 15%);
+  }
+
+  &--isPrimary {
+    background-color: $primaryColor;
+
+    &:hover {
+      background-color: darken($primaryColor, 10%);
+    }
+  }
+
+  &--isMain {
+    background-color: $mainColor;
+
+    &:hover {
+      background-color: darken($mainColor, 10%);
+    }
+  }
+
+  &--isSmall {
+    padding: 5px 10px;
+  }
+}

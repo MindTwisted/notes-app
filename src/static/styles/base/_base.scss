@@ -1,0 +1,13 @@
+html {
+  font-size: $baseFontSize;
+}
+
+body {
+  background-color: #f0f3f8;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  font-size: 1rem;
+  font-family: $mainFont;
+  color: $darkColor;
+}

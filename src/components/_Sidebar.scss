@@ -1,0 +1,29 @@
+.Sidebar {
+  $sidebarPadding: 30px;
+
+  width: $sidebarWidth;
+  background-color: $darkColor;
+  box-shadow: inset -12.8px 11.2px 10px 0 rgba(0, 0, 0, 0.15);
+  min-height: calc(100vh - #{$navbarHeight} - (#{$sidebarPadding} * 2));
+  padding: $sidebarPadding 0;
+
+  &__navLink {
+    height: 115px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    letter-spacing: 0.7px;
+    color: $sidebarDefaultColor;
+
+    &.active {
+      background-color: #34404c;
+      color: #ffffff;
+    }
+  }
+
+  &__navWrap {
+    text-align: center;
+  }
+}
