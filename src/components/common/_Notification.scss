@@ -1,0 +1,81 @@
+.Notification {
+  position: fixed;
+  background-color: #fff;
+  right: $notificationRightPosition;
+  top: 100px;
+  box-shadow: $panelShadow;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: $notificationMaxWidth;
+  z-index: 100000;
+
+  &__message {
+    display: inline-flex;
+    margin-left: 20px;
+    flex-wrap: wrap;
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--isSuccess {
+    color: $successColor;
+
+    .Notification__icon {
+      svg {
+        fill: $successColor;
+      }
+    }
+  }
+
+  &--isError {
+    color: $dangerColor;
+
+    .Notification__icon {
+      svg {
+        fill: $dangerColor;
+      }
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
+
+// Animation styles
+.slide-appear {
+  opacity: 0.01;
+  right: -$notificationMaxWidth;
+}
+
+.slide-appear.slide-appear-active {
+  opacity: 1;
+  right: $notificationRightPosition;
+  transition: all .5s ease-in;
+}

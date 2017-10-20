@@ -4,15 +4,13 @@ import {Provider} from 'react-redux';
 
 import './index.css';
 
-import App from './containers/_App';
+import Main from './Main';
 
-import store from './store/configureStore';
+import store from './redux/store/configureStore';
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
-            <App/>
-        </div>
+        <Main/>
     </Provider>,
     document.getElementById('root')
 );

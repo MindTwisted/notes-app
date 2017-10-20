@@ -1,0 +1,36 @@
+.EditField {
+
+  &__input {
+    display: inline-block;
+    min-width: 300px;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  &__saveButton,
+  &__cancelButton {
+    display: inline-block;
+    margin: 0 2.5px;
+  }
+
+  &__viewForm {
+    display: flex;
+    align-items: center;
+  }
+
+  &__editForm {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__editButton {
+    margin: 0 5px;
+    cursor: pointer;
+    display: inline-block;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
