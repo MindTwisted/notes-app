@@ -26,7 +26,9 @@ class Settings extends Component {
                                 <UserSettings user={this.props.user}
                                               updateUserEmail={this.props.updateUserEmail}
                                               updateUserPassword={this.props.updateUserPassword}
-                                              updateUserName={this.props.updateUserName}/>
+                                              updateUserName={this.props.updateUserName}
+                                              reAuthUser={this.props.reAuthUser}
+                                              deleteUser={this.props.deleteUser}/>
                             </TabPanel>
                             <TabPanel>
                                 <p>This section is under construction</p>
@@ -48,8 +50,8 @@ Settings.propTypes = {
     updateUserEmail: PropTypes.func.isRequired,
     updateUserPassword: PropTypes.func.isRequired,
     updateUserName: PropTypes.func.isRequired,
-    addSuccessNotification: PropTypes.func.isRequired,
-    deleteNotification: PropTypes.func.isRequired,
+    reAuthUser: PropTypes.func.isRequired,
+    deleteUser: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 };
 

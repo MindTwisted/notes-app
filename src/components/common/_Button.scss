@@ -27,6 +27,14 @@
     }
   }
 
+  &--isDanger {
+    background-color: $dangerColor;
+
+    &:hover {
+      background-color: darken($dangerColor, 10%);
+    }
+  }
+
   &--isSmall {
     padding: 5px 10px;
   }

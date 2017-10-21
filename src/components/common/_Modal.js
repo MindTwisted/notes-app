@@ -22,21 +22,32 @@ Modal.defaultProps = {
 };
 
 export function ModalHeader(props) {
+    const modalTitleClassNames = props.closeButton ?
+        'Modal__title' :
+        'Modal__title Modal__title--centered';
+
     return (
         <div className="Modal__header">
-            <div className="Modal__title">
+            <div className={modalTitleClassNames}>
                 {props.children}
             </div>
-            <div className="Modal__close"
-                 onClick={props.onClose}>
-                &#10005;
-            </div>
+            {props.closeButton ?
+                <div className="Modal__close"
+                     onClick={props.onClose}>
+                    &#10005;
+                </div> :
+                null}
         </div>
     )
 }
 
+ModalHeader.defaultProps = {
+    closeButton: true
+};
+
 ModalHeader.propTypes = {
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    closeButton: PropTypes.bool
 };
 
 export function ModalBody(props) {
@@ -48,9 +59,21 @@ export function ModalBody(props) {
 }
 
 export function ModalFooter(props) {
+    const modalFooterClassNames = props.centeredContent ?
+        'Modal__footer Modal__footer--centered' :
+        'Modal__footer';
+
     return (
-        <div className="Modal__footer">
+        <div className={modalFooterClassNames}>
             {props.children}
         </div>
     )
 }
+
+ModalFooter.defaultProps = {
+    centeredContent: false
+};
+
+ModalFooter.propTypes = {
+    centeredContent: PropTypes.bool
+};

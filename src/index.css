@@ -704,36 +704,13 @@ body {
     width: 25px;
     height: 25px; }
 
-.AddField__content {
-  display: flex;
-  align-items: flex-start; }
-
-.AddField__input {
-  min-width: 300px;
-  max-width: 400px;
-  width: 100%; }
-
-.AddField__saveButton {
-  display: inline-block;
-  margin: 0 2.5px; }
-
-.AddField .Collapsible {
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 5px; }
-  .AddField .Collapsible__trigger {
-    display: block;
-    background-color: rgba(0, 0, 0, 0.03);
-    padding: 10px;
-    cursor: pointer; }
-    .AddField .Collapsible__trigger.is-open {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
-  .AddField .Collapsible__contentInner {
-    padding: 10px; }
-
 .UserSettings .FormGroup__label {
   font-size: 1.25rem; }
   .UserSettings .FormGroup__label:first-child {
     margin-top: 20px; }
+
+.UserSettings__controlElement {
+  margin: 10px 0; }
 
 .Settings .react-tabs__tab {
   border-radius: 0; }
@@ -766,6 +743,9 @@ body {
     align-items: center; }
   .Modal__title {
     font-size: 1.25rem; }
+    .Modal__title--centered {
+      text-align: center;
+      width: 100%; }
   .Modal__close {
     cursor: pointer;
     font-weight: bold;
@@ -781,6 +761,8 @@ body {
     padding: 15px;
     display: flex;
     justify-content: flex-end; }
+    .Modal__footer--centered {
+      justify-content: center; }
     .Modal__footer > * {
       margin: 0 3.5px; }
 
@@ -802,6 +784,10 @@ body {
     background-color: #fd8f3e; }
     .Button--isMain:hover {
       background-color: #fc720c; }
+  .Button--isDanger {
+    background-color: #c82333; }
+    .Button--isDanger:hover {
+      background-color: #9d1b28; }
   .Button--isSmall {
     padding: 5px 10px; }
 

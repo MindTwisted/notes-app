@@ -65,8 +65,8 @@ class App extends Component {
                           updateUserEmail={dispatch(userActions.updateUserEmail)}
                           updateUserPassword={dispatch(userActions.updateUserPassword)}
                           updateUserName={dispatch(userActions.updateUserName)}
-                          addSuccessNotification={dispatch(notificationActions.addSuccessNotification)}
-                          deleteNotification={dispatch(notificationActions.removeNotification)}/> :
+                          reAuthUser={dispatch(authActions.reAuthenticateRequest)}
+                          deleteUser={dispatch(authActions.deleteAccountRequest)}/> :
                 null
         };
 

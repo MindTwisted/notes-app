@@ -42,7 +42,7 @@ class EditName extends Component {
         return (
             <EditField label="User Name"
                        fieldType="text"
-                       fieldValue={this.props.user.name}
+                       fieldValue={this.props.user.name ? this.props.user.name : ''}
                        onSubmitEditing={this.handleNameSubmit}
                        errors={this.state.errors}
                        clearErrors={this.clearErrors}/>

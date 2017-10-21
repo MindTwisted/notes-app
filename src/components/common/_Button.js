@@ -5,7 +5,8 @@ export default function Button(props) {
     const typeClassNames = {
         default: '',
         primary: 'Button--isPrimary',
-        main: 'Button--isMain'
+        main: 'Button--isMain',
+        danger: 'Button--isDanger'
     };
 
     const sizeClassNames = {

@@ -1,6 +1,8 @@
+import firebaseNPM from 'firebase';
 import firebase from '../../firebase';
 
-import {setErrorNotification} from './notification';
+import {setErrorNotification, setSuccessNotification} from './notification';
+import {setUserName} from './user';
 
 import * as types from '../constants/ActionTypes';
 
@@ -18,18 +20,53 @@ export function setLoggedIn() {
 
 export function registerUserRequest(dispatch) {
     return function (email, password) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(() => {
+                let user = firebase.auth().currentUser;
+                let newUserName = 'Anonymous';
+
+                user.updateProfile({
+                    displayName: newUserName
+                }).then(() => {
+                    dispatch(setUserName(newUserName));
+                });
+            })
+            .catch(function (error) {
+                const errorMessage = error.message;
+                dispatch(setErrorNotification(errorMessage));
+            });
+    }
+}
+
+export function signInRequest(dispatch) {
+    return function (email, password) {
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
             const errorMessage = error.message;
             dispatch(setErrorNotification(errorMessage));
         });
     }
 }
 
-export function signInRequest(dispatch) {
-    return function (email, password) {
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            const errorMessage = error.message;
-            dispatch(setErrorNotification(errorMessage));
+export function reAuthenticateRequest(dispatch) {
+    return function (password) {
+        return new Promise((resolve, reject) => {
+            const user = firebase.auth().currentUser;
+
+            const credential = firebaseNPM.auth.EmailAuthProvider.credential(
+                user.email,
+                password
+            );
+
+            user.reauthenticateWithCredential(credential)
+                .then(() => {
+                    dispatch(setSuccessNotification('You was successfully re-authenticated'));
+                    resolve();
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    dispatch(setErrorNotification(errorMessage));
+                    reject(errorMessage);
+                });
         });
     }
 }
@@ -41,5 +78,26 @@ export function signOutRequest(dispatch) {
         }).catch(function (error) {
             // An error happened.
         });
+    }
+}
+
+export function deleteAccountRequest(dispatch) {
+    return function () {
+        const user = firebase.auth().currentUser;
+        const userId = user.uid;
+
+        user.delete()
+            .then(() => {
+                const deleteCategoriesRef = firebase.database().ref(`categories/${userId}`);
+
+                deleteCategoriesRef.remove();
+                deleteCategoriesRef.once('value', () => {
+                    // continue delete next branch of data here
+                    dispatch(setLoggedOut());
+                });
+            })
+            .catch((error) => {
+                dispatch(setErrorNotification(error.message));
+            });
     }
 }
