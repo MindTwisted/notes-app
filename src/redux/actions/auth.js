@@ -22,13 +22,18 @@ export function registerUserRequest(dispatch) {
     return function (email, password) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(() => {
-                let user = firebase.auth().currentUser;
+                const user = firebase.auth().currentUser;
+                const userId = user.uid;
                 let newUserName = 'Anonymous';
 
                 user.updateProfile({
                     displayName: newUserName
                 }).then(() => {
                     dispatch(setUserName(newUserName));
+                });
+
+                firebase.database().ref(`${userId}/appSettings/noteSettings`).set({
+                    viewMode: 'LIST'
                 });
             })
             .catch(function (error) {
@@ -88,11 +93,10 @@ export function deleteAccountRequest(dispatch) {
 
         user.delete()
             .then(() => {
-                const deleteCategoriesRef = firebase.database().ref(`categories/${userId}`);
+                const userDatabaseRef = firebase.database().ref(`${userId}`);
 
-                deleteCategoriesRef.remove();
-                deleteCategoriesRef.once('value', () => {
-                    // continue delete next branch of data here
+                userDatabaseRef.remove();
+                userDatabaseRef.once('value', () => {
                     dispatch(setLoggedOut());
                 });
             })

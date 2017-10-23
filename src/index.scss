@@ -20,6 +20,8 @@
 @import "components/Settings/EditField";
 @import "components/Settings/UserSettings";
 @import "components/Settings/Settings";
+@import "components/Notes/Notes";
+@import "components/Notes/NoteItem";
 // Common components
 @import "components/common/PageHeader";
 @import "components/common/Modal";
@@ -27,6 +29,9 @@
 @import "components/common/Form";
 @import "components/common/SearchBox";
 @import "components/common/Notification";
+@import "components/common/ItemsControlPanel";
+@import "components/common/ItemsViewToggler";
+@import "components/common/Preloader";
 // Icons
 @import "components/common/icons/DashboardSVG";
 @import "components/common/icons/NotesSVG";
@@ -37,3 +42,5 @@
 @import "components/common/icons/SearchSVG";
 @import "components/common/icons/EditSVG";
 @import "components/common/icons/DeleteSVG";
+@import "components/common/icons/GridViewSVG";
+@import "components/common/icons/ListViewSVG";

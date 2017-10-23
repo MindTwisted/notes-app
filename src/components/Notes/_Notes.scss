@@ -1,0 +1,53 @@
+.Notes {
+  $rootClassName: '.Notes';
+
+  height: 1px;
+  min-height: calc(100% - 100px);
+
+  &--gridMode {
+
+    #{$rootClassName} {
+      &__content {
+        background-color: transparent;
+        box-shadow: none;
+      }
+
+      &__head {
+        background-color: #fff;
+        box-shadow: $panelShadow;
+        margin-bottom: 15px;
+      }
+
+      &__body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      &__noteItem {
+        margin: 15px;
+      }
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    min-height: 100%;
+    margin-top: 20px;
+    box-shadow: $panelShadow;
+    position: relative;
+  }
+
+  &__viewToggler {
+    position: absolute;
+    top: -25px;
+    right: 15px;
+  }
+
+  &__empty {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}

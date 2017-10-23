@@ -12,6 +12,7 @@ import Notes from '../Notes/_Notes';
 import Categories from '../Categories/_Categories';
 import Settings from '../Settings/_Settings';
 import Notification from '../common/_Notification';
+import Preloader from '../common/_Preloader';
 
 import * as Actions from '../../redux/actions/index';
 
@@ -30,8 +31,10 @@ class App extends Component {
     componentDidMount() {
         const dispatch = this.props.dispatch;
         const userActions = Actions.userActions;
+        const fetchActions = Actions.fetchActions;
 
         dispatch(userActions.fetchUser());
+        dispatch(fetchActions.fetchData());
     }
 
     showSettings() {
@@ -78,9 +81,14 @@ class App extends Component {
                 null;
         };
 
+        const renderPreloader = () => {
+            return this.props.appSettings.isLoading ? <Preloader/> : null;
+        };
+
         return (
             <Router>
                 <div className="App">
+                    {renderPreloader()}
                     {renderNotification()}
                     {renderSettings()}
                     <div className="App__navbar">
@@ -110,7 +118,8 @@ class App extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
-    notification: state.notification
+    notification: state.notification,
+    appSettings: state.appSettings
 });
 
 const mapDispatchToProps = dispatch => ({

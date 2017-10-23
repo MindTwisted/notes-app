@@ -6,6 +6,7 @@ import Button from '../common/_Button';
 import CategoryItem from './_CategoryItem';
 import SearchBox from '../common/_SearchBox';
 import AddCategory from './_AddCategory';
+import {ItemsControlPanel, Filters, Controls} from '../common/_ItemsControlPanel';
 
 import * as TodoActions from '../../redux/actions/index';
 
@@ -28,10 +29,6 @@ class Categories extends Component {
         this.hideAddCategoryModal = this.hideAddCategoryModal.bind(this);
         this.setCategoryOnEdit = this.setCategoryOnEdit.bind(this);
         this.clearCategoryOnEdit = this.clearCategoryOnEdit.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.dispatch(TodoActions.categoriesActions.fetchCategories());
     }
 
     setSearchFilter(text) {
@@ -113,14 +110,16 @@ class Categories extends Component {
                 <PageHeader text="Categories"/>
                 <div className="Categories__content">
                     <div className="Categories__head">
-                        <div className="Categories__filters">
-                            <SearchBox onSearchChange={this.setSearchFilter}/>
-                        </div>
-                        <div className="Categories__controls">
-                            <Button text="New Category"
-                                    type="main"
-                                    onClick={this.showAddCategoryModal}/>
-                        </div>
+                        <ItemsControlPanel>
+                            <Filters>
+                                <SearchBox onSearchChange={this.setSearchFilter}/>
+                            </Filters>
+                            <Controls>
+                                <Button text="New Category"
+                                        type="main"
+                                        onClick={this.showAddCategoryModal}/>
+                            </Controls>
+                        </ItemsControlPanel>
                     </div>
                     <div className="Categories__body">
                         {renderCategories().length > 0 ?

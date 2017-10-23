@@ -37,33 +37,11 @@ export function updateCategory(id, title) {
     }
 }
 
-export function fetchCategories() {
-    return function (dispatch) {
-        const userId = firebase.auth().currentUser.uid;
-
-        return firebase.database().ref(`categories/${userId}`).once('value')
-            .then((snapshot) => {
-                if (snapshot.val()) {
-                    const categories = [];
-
-                    snapshot.forEach(function (childSnapshot) {
-                        categories.push({
-                            id: childSnapshot.key,
-                            title: childSnapshot.val().title
-                        });
-                    });
-
-                    dispatch(setCategories(categories));
-                }
-            });
-    }
-}
-
 export function addCategoryRequest(dispatch) {
     return function (title) {
         return new Promise((resolve) => {
             const userId = firebase.auth().currentUser.uid;
-            const newCategoryRef = firebase.database().ref(`categories/${userId}`).push();
+            const newCategoryRef = firebase.database().ref(`${userId}/categories`).push();
             const newCategory = {
                 id: newCategoryRef.key,
                 title
@@ -73,7 +51,7 @@ export function addCategoryRequest(dispatch) {
                 title: newCategory.title
             });
 
-            newCategoryRef.on('child_added', () => {
+            newCategoryRef.once('child_added', () => {
                 dispatch(addCategory(newCategory));
                 dispatch(deleteNotification());
                 dispatch(setSuccessNotification(`Category with title "${newCategory.title}"
@@ -88,7 +66,7 @@ export function deleteCategoryRequest(dispatch) {
     return function (id, title) {
         return new Promise((resolve) => {
             const userId = firebase.auth().currentUser.uid;
-            const deletingCategoryRef = firebase.database().ref(`categories/${userId}/${id}`);
+            const deletingCategoryRef = firebase.database().ref(`${userId}/categories/${id}`);
 
             deletingCategoryRef.remove();
             deletingCategoryRef.once('value', () => {
@@ -106,7 +84,7 @@ export function updateCategoryRequest(dispatch) {
     return function (id, title) {
         return new Promise((resolve) => {
             const userId = firebase.auth().currentUser.uid;
-            const updatingCategoryRef = firebase.database().ref(`categories/${userId}/${id}`);
+            const updatingCategoryRef = firebase.database().ref(`${userId}/categories/${id}`);
 
             updatingCategoryRef.set({
                 title
