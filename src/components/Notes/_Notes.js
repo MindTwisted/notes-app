@@ -14,6 +14,7 @@ class Notes extends Component {
 
     render() {
         const dispatch = this.props.dispatch;
+        const notesActions = TodoActions.notesActions;
         const appSettingsActions = TodoActions.appSettingsActions;
         const noteSettings = this.props.appSettings.noteSettings;
         const notesClassList = noteSettings && noteSettings.viewMode === 'GRID' ?
@@ -29,7 +30,8 @@ class Notes extends Component {
                             <NoteItem title={item.title}
                                       body={item.body}
                                       id={item.id}
-                                      viewMode={noteSettings.viewMode}/>
+                                      viewMode={noteSettings.viewMode}
+                                      deleteNote={dispatch(notesActions.deleteNoteRequest)}/>
                         </div>
                     )
                 }) :

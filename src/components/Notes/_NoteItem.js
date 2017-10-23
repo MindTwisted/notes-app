@@ -12,7 +12,7 @@ class NoteItem extends Component {
     }
 
     onDeleteClick() {
-
+        this.props.deleteNote(this.props.id, this.props.title);
     }
 
     render() {
@@ -34,7 +34,7 @@ class NoteItem extends Component {
                         <EditSVG/>
                     </div>
                     <div className="NoteItem__controlElement"
-                         onClick={() => null}>
+                         onClick={this.onDeleteClick}>
                         <DeleteSVG/>
                     </div>
                 </div>
@@ -47,7 +47,8 @@ NoteItem.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    viewMode: PropTypes.string.isRequired
+    viewMode: PropTypes.string.isRequired,
+    deleteNote: PropTypes.func.isRequired
 };
 
 export default NoteItem;

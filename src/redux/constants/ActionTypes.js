@@ -11,6 +11,7 @@ export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 
 // Note actions
 export const SET_NOTES = 'SET_NOTES';
+export const DELETE_NOTE = 'DELETE_NOTE';
 
 // Notification actions
 export const SET_SUCCESS_NOTIFICATION = 'SET_SUCCESS_NOTIFICATION';
