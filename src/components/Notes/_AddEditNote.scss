@@ -1,0 +1,27 @@
+.AddEditNote {
+
+  &__RTE {
+    & > * {
+      border-radius: 0 !important;
+      transition: border-color 0.25s ease;
+    }
+
+    &--isFocus {
+      & > * {
+        border: 1px solid $primaryColor !important;
+      }
+    }
+  }
+
+  .DraftEditor-root {
+    font-family: $mainFont;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .public-DraftEditor-content {
+    min-height: 300px;
+    overflow-y: scroll;
+    max-height: 500px;
+  }
+}

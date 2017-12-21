@@ -6,6 +6,7 @@
   box-shadow: inset -12.8px 11.2px 10px 0 rgba(0, 0, 0, 0.15);
   min-height: calc(100vh - #{$navbarHeight} - (#{$sidebarPadding} * 2));
   padding: $sidebarPadding 0;
+  overflow: hidden;
 
   &__navLink {
     height: 115px;
@@ -20,6 +21,7 @@
     &.active {
       background-color: #34404c;
       color: #ffffff;
+      box-shadow: 0 7px 10px 5px rgba(0, 0, 0, 0.2), 0 -7px 10px 5px rgba(0, 0, 0, 0.2);
     }
   }
 

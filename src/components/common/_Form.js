@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export function FormGroup(props) {
@@ -16,42 +16,39 @@ FormGroup.propTypes = {
     label: PropTypes.string
 };
 
-export class InputField extends Component {
+export function InputField(props) {
+    const renderErrors = () => {
+        return props.errorMessages.map((msg, index) => {
+            return (
+                <li key={index}
+                    className="InputField__errorItem">{msg}</li>
+            )
+        });
+    };
 
-    render() {
-        const renderErrors = (() => {
-            return this.props.errorMessages.map((msg, index) => {
-                return (
-                    <li key={index}
-                        className="InputField__errorItem">{msg}</li>
-                )
-            });
-        })();
+    const inputClassList = props.errorMessages.length > 0 ?
+        'InputField InputField--isError' :
+        'InputField';
 
-        const inputClassList = this.props.errorMessages.length > 0 ?
-            'InputField InputField--isError' :
-            'InputField';
-
-        return (
-            <div className={inputClassList}>
-                <div className="InputField__input">
-                    <input type={this.props.type}
-                           defaultValue={this.props.defaultValue}
-                           placeholder={this.props.placeholder}
-                           ref={this.props.inputRef}/>
-                </div>
-                <ul className="InputField__errorsList">
-                    {renderErrors}
-                </ul>
+    return (
+        <div className={inputClassList}>
+            <div className="InputField__input">
+                <input type={props.type}
+                       defaultValue={props.defaultValue}
+                       placeholder={props.placeholder}
+                       ref={props.inputRef}/>
             </div>
-        )
-    }
+            <ul className="InputField__errorsList">
+                {renderErrors()}
+            </ul>
+        </div>
+    )
 }
 
 InputField.propTypes = {
     type: PropTypes.string.isRequired,
     defaultValue: PropTypes.string,
     placeholder: PropTypes.string,
-    errorMessages: PropTypes.array,
+    errorMessages: PropTypes.array.isRequired,
     inputRef: PropTypes.func
 };
